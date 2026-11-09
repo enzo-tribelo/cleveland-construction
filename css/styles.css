@@ -422,7 +422,7 @@ p {
 
 .project-head {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr;
   gap: 1.25rem;
   align-items: end;
   margin-bottom: 1.25rem;
@@ -439,22 +439,6 @@ p {
 .project-head h3 {
   font-size: clamp(2rem, 4vw, 3rem);
   margin: 0;
-}
-
-.project-value {
-  margin: 0;
-  text-align: right;
-  font-weight: 600;
-  color: var(--navy);
-}
-
-.project-value span {
-  display: block;
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  font-weight: 600;
 }
 
 .project-copy {
@@ -793,15 +777,6 @@ html.lightbox-open body {
   .people-grid,
   .contact-grid {
     grid-template-columns: 1fr;
-  }
-
-  .project-head {
-    grid-template-columns: auto 1fr;
-  }
-
-  .project-value {
-    grid-column: 2;
-    text-align: left;
   }
 
   .nav-toggle {
