@@ -28,7 +28,9 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:
-          # Creates the Pages site on the first run when it is not enabled yet.
+          # Ask Pages to create the site if it does not exist yet. The token
+          # available to this repository cannot do that (administration:write
+          # is required), so an owner still sets Source to GitHub Actions once.
           enablement: true
 
       - name: Assemble site

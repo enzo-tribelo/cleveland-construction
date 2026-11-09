@@ -33,7 +33,13 @@ St James Square is written up from the brochure, which did not include pictures 
 
 `.github/workflows/deploy.yml` runs on every push to `main`. It uses the official GitHub Pages actions (`configure-pages`, `upload-pages-artifact`, `deploy-pages`).
 
-In the repository, Pages must use **GitHub Actions** as the source: Settings → Pages → Build and deployment → Source → GitHub Actions.
+Pages has to be switched on once by someone with admin access to the repository. The workflow cannot do that itself: GitHub returns “Resource not accessible by integration” for this app.
+
+1. Open [Settings → Pages](https://github.com/enzo-tribelo/cleveland-construction/settings/pages).
+2. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+3. Open the [Deploy GitHub Pages workflow](https://github.com/enzo-tribelo/cleveland-construction/actions/workflows/deploy.yml), select the latest run, and choose **Re-run failed jobs**.
+
+After that, every push to `main` publishes on its own. The source must stay on **GitHub Actions** (not “Deploy from a branch”).
 
 Asset links in the HTML are relative (`assets/...`, `css/...`), so the site works at `https://enzo-tribelo.github.io/cleveland-construction/` without a leading-slash path.
 
