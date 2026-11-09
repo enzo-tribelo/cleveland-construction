@@ -54,3 +54,29 @@ Do not add a `CNAME` file until the domain is ready. When it is:
    - For `www`, add a CNAME record pointing to `enzo-tribelo.github.io`.
 4. After DNS has updated, turn on Enforce HTTPS in the Pages settings.
 5. In `index.html`, change the canonical URL, `og:url`, `og:image` and the `url` in the structured data to the new domain. Update the same address in `robots.txt` and `sitemap.xml`.
+
+## Analytics and Search Console
+
+Both are off until the client supplies IDs. With the defaults, the site loads no Google script and sets no analytics cookies.
+
+### Google Analytics 4
+
+1. Open `js/config.js`.
+2. Set `GA_MEASUREMENT_ID` to the GA4 measurement ID, for example `G-XXXXXXXXXX`.
+3. Commit and push to `main`.
+
+When that ID is empty, nothing analytics-related runs. When it is set, a cookie banner appears with equal **Reject** and **Accept** buttons. The choice is stored in `localStorage` under `cleveland-analytics-consent`. Google Consent Mode v2 defaults to denied. `gtag.js` is loaded only after Accept, and only `analytics_storage` is granted. Advertising storage stays denied. Reject leaves analytics unloaded. Clear the site data for this domain to see the banner again.
+
+### Search Console
+
+Prefer a DNS TXT record once the custom domain is connected. That does not require a tag in the page.
+
+If you need the HTML tag instead, edit the commented placeholder in the `<head>` of `index.html`:
+
+```html
+<meta name="google-site-verification" content="paste-the-token-here">
+```
+
+Remove the comment marks so the tag is live, then commit and push.
+
+After the custom domain is serving this site, submit `sitemap.xml` in Search Console (for example `https://your-domain/sitemap.xml`).
