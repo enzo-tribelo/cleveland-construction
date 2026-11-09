@@ -20,30 +20,49 @@
   <link rel="icon" href="assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="assets/favicon-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560;9..144,640&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/images/chalfont/front.webp" imagesrcset="assets/images/chalfont/front-800.webp 800w, assets/images/chalfont/front.webp 1600w" imagesizes="(max-width: 900px) 100vw, 36rem" fetchpriority="high">
   <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "GeneralContractor",
+    "@type": ["LocalBusiness", "GeneralContractor"],
     "name": "Cleveland Construction Ltd",
+    "legalName": "Cleveland Construction Ltd",
     "url": "https://enzo-tribelo.github.io/cleveland-construction/",
     "image": "https://enzo-tribelo.github.io/cleveland-construction/assets/images/og.jpg",
-    "email": "Rich@clevelandconstruction.co.uk",
+    "email": "rich@clevelandconstruction.co.uk",
     "telephone": "+447825071298",
-    "areaServed": "GB",
+    "identifier": {
+      "@type": "PropertyValue",
+      "name": "Company number",
+      "propertyID": "Company Number",
+      "value": "13122642"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "141 Leigh Park Road",
+      "addressLocality": "Bradford on Avon",
+      "postalCode": "BA15 1TQ",
+      "addressCountry": "GB"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "United Kingdom"
+    },
     "employee": [
       {
         "@type": "Person",
         "name": "Richard Waldron",
-        "jobTitle": "Director"
+        "jobTitle": "Director",
+        "email": "rich@clevelandconstruction.co.uk",
+        "telephone": "+447825071298"
       },
       {
         "@type": "Person",
         "name": "Sarah Waldron",
-        "jobTitle": "Office Manager"
+        "jobTitle": "Office Manager",
+        "email": "sarah@clevelandconstruction.co.uk"
       }
     ]
   }
@@ -54,7 +73,7 @@
   <header class="site-header">
     <div class="wrap">
       <a class="brand" href="#top">
-        <img src="assets/images/mark.webp" width="1028" height="667" alt="">
+        <img src="assets/images/mark.webp" width="192" height="125" alt="">
         <span>Cleveland<small>Construction</small></span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
@@ -586,10 +605,11 @@
         <div>
           <p class="eyebrow">Contact</p>
           <h2 id="contact-title">Talk to Cleveland Construction</h2>
-          <p>For a residential project, a listed-building repair or a new home, contact Richard Waldron. Sarah Waldron, Office Manager, looks after office enquiries on the same details. There is no online form: email or call, and the message goes straight to the team.</p>
+          <p>For a residential project, a listed-building repair or a new home, contact Richard Waldron, Director, or Sarah Waldron, Office Manager. There is no online form: email or call, and the message goes straight to the team.</p>
           <ul class="contact-links">
             <li><a href="tel:+447825071298">07825 071298</a></li>
-            <li><a href="mailto:Rich@clevelandconstruction.co.uk">Rich@clevelandconstruction.co.uk</a></li>
+            <li><a href="mailto:rich@clevelandconstruction.co.uk">rich@clevelandconstruction.co.uk</a></li>
+            <li><a href="mailto:sarah@clevelandconstruction.co.uk">sarah@clevelandconstruction.co.uk</a></li>
           </ul>
         </div>
         <div>
@@ -597,12 +617,12 @@
             <h3>Richard Waldron</h3>
             <p>Director</p>
             <p><a href="tel:+447825071298">07825 071298</a><br>
-            <a href="mailto:Rich@clevelandconstruction.co.uk">Rich@clevelandconstruction.co.uk</a></p>
+            <a href="mailto:rich@clevelandconstruction.co.uk">rich@clevelandconstruction.co.uk</a></p>
           </article>
           <article class="contact-card">
             <h3>Sarah Waldron</h3>
             <p>Office Manager</p>
-            <p><a href="mailto:Rich@clevelandconstruction.co.uk">Rich@clevelandconstruction.co.uk</a></p>
+            <p><a href="mailto:sarah@clevelandconstruction.co.uk">sarah@clevelandconstruction.co.uk</a></p>
           </article>
         </div>
       </div>
@@ -611,16 +631,22 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <p>Cleveland Construction Ltd</p>
-      <p>Residential construction, refurbishment and restoration.</p>
+      <p>Cleveland Construction Ltd. Registered in England and Wales, company number 13122642. Registered office: 141 Leigh Park Road, Bradford on Avon, BA15 1TQ.</p>
+      <p class="footer-copy">© <span id="copyright-year">2026</span> Cleveland Construction Ltd</p>
     </div>
   </footer>
 
-  <dialog id="lightbox" aria-label="Enlarged project photograph">
-    <button class="lightbox-close" type="button">Close</button>
-    <img id="lightbox-img" alt="">
-    <p id="lightbox-cap"></p>
+  <dialog id="lightbox" aria-labelledby="lightbox-cap">
+    <div class="lightbox-toolbar">
+      <p id="lightbox-count" class="lightbox-count"></p>
+      <button class="lightbox-close" type="button">Close</button>
+    </div>
+    <div class="lightbox-frame">
+      <button class="lightbox-prev lightbox-nav" type="button" aria-label="Previous photograph"><span aria-hidden="true">‹</span></button>
+      <img id="lightbox-img" alt="" width="1600" height="1200">
+      <button class="lightbox-next lightbox-nav" type="button" aria-label="Next photograph"><span aria-hidden="true">›</span></button>
+    </div>
+    <p id="lightbox-cap" aria-live="polite"></p>
   </dialog>
-  <script src="js/main.js"></script>
 </body>
 </html>

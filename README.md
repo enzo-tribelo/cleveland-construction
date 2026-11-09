@@ -15,8 +15,8 @@ Live site: https://enzo-tribelo.github.io/cleveland-construction/
 
 Contact details on the page:
 
-- Richard Waldron, Director — 07825 071298 — Rich@clevelandconstruction.co.uk
-- Sarah Waldron, Office Manager
+- Richard Waldron, Director — 07825 071298 — rich@clevelandconstruction.co.uk
+- Sarah Waldron, Office Manager — sarah@clevelandconstruction.co.uk
 
 There is no enquiry form. The telephone and email links use `tel:` and `mailto:`.
 
@@ -53,4 +53,4 @@ Do not add a `CNAME` file until the domain is ready. When it is:
    - For an apex domain such as `clevelandconstruction.co.uk`, add these A records: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`.
    - For `www`, add a CNAME record pointing to `enzo-tribelo.github.io`.
 4. After DNS has updated, turn on Enforce HTTPS in the Pages settings.
-5. In `index.html`, change the canonical URL, `og:url`, `og:image` and the address in the structured data to the new domain.
+5. In `index.html`, change the canonical URL, `og:url`, `og:image` and the `url` in the structured data to the new domain. Update the same address in `robots.txt` and `sitemap.xml`.

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://enzo-tribelo.github.io/cleveland-construction/sitemap.xml
