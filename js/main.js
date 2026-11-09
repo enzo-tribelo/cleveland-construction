@@ -17,6 +17,14 @@
         toggle.setAttribute("aria-expanded", "false");
       }
     });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && nav.classList.contains("is-open") && !(dialog && dialog.open)) {
+        nav.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.focus();
+      }
+    });
   }
 
   var dialog = document.querySelector("#lightbox");
@@ -35,6 +43,19 @@
   var touchStartX = 0;
   var touchStartY = 0;
   var tracking = false;
+  var background = document.querySelectorAll("header, main, footer");
+
+  function setBackgroundHidden(hidden) {
+    Array.prototype.forEach.call(background, function (element) {
+      if (hidden) {
+        element.setAttribute("inert", "");
+        element.setAttribute("aria-hidden", "true");
+      } else {
+        element.removeAttribute("inert");
+        element.removeAttribute("aria-hidden");
+      }
+    });
+  }
 
   function focusable() {
     return Array.prototype.filter.call(dialog.querySelectorAll("button"), function (button) {
@@ -65,11 +86,18 @@
   function openAt(nextIndex, trigger) {
     opener = trigger || document.activeElement;
     show(nextIndex);
+    if (nav && toggle && nav.classList.contains("is-open")) {
+      nav.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
     if (!dialog.open) dialog.showModal();
+    setBackgroundHidden(true);
     if (closeButton) closeButton.focus();
   }
 
   shots.forEach(function (button, shotIndex) {
+    button.setAttribute("aria-haspopup", "dialog");
+    button.setAttribute("aria-controls", "lightbox");
     button.addEventListener("click", function () {
       openAt(shotIndex, button);
     });
@@ -96,6 +124,7 @@
   });
 
   dialog.addEventListener("close", function () {
+    setBackgroundHidden(false);
     viewer.removeAttribute("src");
     viewer.alt = "";
     caption.textContent = "";
