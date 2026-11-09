@@ -617,26 +617,45 @@ p {
 }
 
 #lightbox {
-  width: auto;
-  max-width: calc(100vw - 1rem);
-  max-height: 96vh;
-  padding: 0.75rem 0.75rem 0.9rem;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 1rem;
   border: 0;
   background: #07101f;
   color: #fbf9f4;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
 }
 
 #lightbox::backdrop {
   background: rgba(0, 10, 24, 0.88);
 }
 
-.lightbox-stage {
+.lightbox-layout {
   position: relative;
   width: min(90vw, 1200px);
-  height: min(80vh, 800px);
   max-width: 100%;
+}
+
+.lightbox-stage {
+  position: relative;
+  width: 100%;
+  height: min(80vh, 800px);
   background: #0b1526;
   touch-action: pan-y;
+}
+
+.lightbox-meta {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  right: 0;
 }
 
 #lightbox img {
@@ -695,7 +714,7 @@ p {
 
 .lightbox-count,
 #lightbox-cap {
-  margin: 0.65rem 0.15rem 0;
+  margin: 0;
   font-size: 0.95rem;
   line-height: 1.4;
   text-align: left;
@@ -760,8 +779,11 @@ p {
     width: min(var(--measure), calc(100% - 1.5rem));
   }
 
-  .lightbox-stage {
+  .lightbox-layout {
     width: min(92vw, 1200px);
+  }
+
+  .lightbox-stage {
     height: min(62vh, 800px);
   }
 

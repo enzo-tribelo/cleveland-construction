@@ -637,6 +637,7 @@
   </footer>
 
   <dialog id="lightbox" aria-modal="true" aria-labelledby="lightbox-count lightbox-cap">
+    <div class="lightbox-layout">
     <div class="lightbox-stage">
       <img id="lightbox-img" alt="" width="1600" height="1200">
       <button class="lightbox-control lightbox-prev" type="button" aria-label="Previous photo">
@@ -655,8 +656,11 @@
         </svg>
       </button>
     </div>
-    <p id="lightbox-count" class="lightbox-count"></p>
-    <p id="lightbox-cap" aria-live="polite"></p>
+    <div class="lightbox-meta">
+      <p id="lightbox-count" class="lightbox-count"></p>
+      <p id="lightbox-cap" aria-live="polite"></p>
+    </div>
+    </div>
   </dialog>
 </body>
 </html>

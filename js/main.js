@@ -55,6 +55,7 @@
         element.removeAttribute("aria-hidden");
       }
     });
+    document.documentElement.style.overflow = hidden ? "hidden" : "";
   }
 
   function focusable() {
