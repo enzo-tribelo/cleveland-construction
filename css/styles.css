@@ -616,7 +616,11 @@ p {
   color: #c9c2b6;
 }
 
-#lightbox {
+#lightbox:not([open]) {
+  display: none;
+}
+
+#lightbox[open] {
   position: fixed;
   inset: 0;
   width: 100%;
@@ -630,6 +634,11 @@ p {
   color: #fbf9f4;
   display: grid;
   place-items: center;
+  overflow: hidden;
+}
+
+html.lightbox-open,
+html.lightbox-open body {
   overflow: hidden;
 }
 

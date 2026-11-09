@@ -55,7 +55,7 @@
         element.removeAttribute("aria-hidden");
       }
     });
-    document.documentElement.style.overflow = hidden ? "hidden" : "";
+    document.documentElement.classList.toggle("lightbox-open", hidden);
   }
 
   function focusable() {
