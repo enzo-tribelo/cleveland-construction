@@ -16,11 +16,13 @@ Live site: https://enzo-tribelo.github.io/cleveland-construction/
 Contact details on the page:
 
 - Richard Waldron, Director — 07825 071298 — rich@clevelandconstruction.co.uk
-- Sarah Waldron, Office Manager — sarah@clevelandconstruction.co.uk
+- Sarah Waldron, Office Manager — same email, rich@clevelandconstruction.co.uk
 
 There is no enquiry form. The telephone and email links use `tel:` and `mailto:`.
 
 ## Add photographs
+
+New project photos are still to come from Rich. Until then, keep the photographs already on the site, including the Claremont House images.
 
 St James Square is written up from the brochure, which did not include pictures of it. Northend already uses the three site photographs from the brochure; more can be added in the same way.
 

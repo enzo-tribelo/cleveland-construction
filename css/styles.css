@@ -596,6 +596,10 @@ p {
   line-height: 1.5;
 }
 
+.site-footer a {
+  color: inherit;
+}
+
 .site-footer .footer-copy {
   color: #c9c2b6;
 }
