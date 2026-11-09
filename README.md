@@ -80,3 +80,15 @@ If you need the HTML tag instead, edit the commented placeholder in the `<head>`
 Remove the comment marks so the tag is live, then commit and push.
 
 After the custom domain is serving this site, submit `sitemap.xml` in Search Console (for example `https://your-domain/sitemap.xml`).
+
+## Social links
+
+Profiles are off until real URLs exist. With the defaults, the footer and contact section show no social icons.
+
+1. Open `js/config.js`.
+2. Paste a full `https://` address into `SOCIAL_LINKS` for any of `instagram`, `facebook`, `linkedin`, `houzz`, or `x`. Leave the others as `""`.
+3. Commit and push to `main`.
+
+Only filled-in links are shown. If every value is empty, the row is not added. Each link opens in a new tab and is named for screen readers, for example “Cleveland Construction on Instagram”.
+
+JSON-LD cannot read `js/config.js`. When the URLs are known, also add a `sameAs` array to the structured data in `index.html`. A commented example sits just above that script.

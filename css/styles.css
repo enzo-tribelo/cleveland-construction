@@ -678,6 +678,41 @@ html.lightbox-open body {
   color: var(--navy);
 }
 
+.social-links {
+  margin: 0.85rem 0 0;
+}
+
+.social-links ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.social-links svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  display: block;
+}
+
+.site-footer .social-links {
+  margin: 0.15rem 0;
+}
+
 #lightbox::backdrop {
   background: rgba(0, 10, 24, 0.88);
 }

@@ -6,6 +6,7 @@
   if (year) year.textContent = String(new Date().getFullYear());
 
   initAnalytics();
+  initSocialLinks();
 
   if (toggle && nav) {
     toggle.addEventListener("click", function () {
@@ -198,6 +199,90 @@
 function measurementId() {
   if (typeof GA_MEASUREMENT_ID !== "string") return "";
   return GA_MEASUREMENT_ID.trim();
+}
+
+function initSocialLinks() {
+  var links = socialEntries();
+  if (!links.length) return;
+  placeSocialRow(document.querySelector(".contact-links"), links);
+  var footer = document.querySelector(".site-footer .wrap");
+  var copy = footer && footer.querySelector(".footer-copy");
+  if (!footer) return;
+  var row = buildSocialNav(links);
+  if (copy) footer.insertBefore(row, copy);
+  else footer.appendChild(row);
+}
+
+function socialEntries() {
+  if (typeof SOCIAL_LINKS !== "object" || !SOCIAL_LINKS) return [];
+  var networks = [
+    { key: "instagram", name: "Instagram" },
+    { key: "facebook", name: "Facebook" },
+    { key: "linkedin", name: "LinkedIn" },
+    { key: "houzz", name: "Houzz" },
+    { key: "x", name: "X" }
+  ];
+  var entries = [];
+  networks.forEach(function (network) {
+    var href = socialHref(SOCIAL_LINKS[network.key]);
+    if (href) entries.push({ name: network.name, href: href, key: network.key });
+  });
+  return entries;
+}
+
+function socialHref(value) {
+  if (typeof value !== "string") return "";
+  var href = value.trim();
+  if (!/^https?:\/\//i.test(href)) return "";
+  return href;
+}
+
+function placeSocialRow(contactList, links) {
+  if (!contactList || !contactList.parentNode) return;
+  contactList.parentNode.insertBefore(buildSocialNav(links), contactList.nextSibling);
+}
+
+function buildSocialNav(links) {
+  var nav = document.createElement("nav");
+  nav.className = "social-links";
+  nav.setAttribute("aria-label", "Social media");
+  var list = document.createElement("ul");
+  links.forEach(function (entry) {
+    var item = document.createElement("li");
+    var link = document.createElement("a");
+    link.href = entry.href;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.setAttribute("aria-label", "Cleveland Construction on " + entry.name);
+    link.appendChild(socialIcon(entry.key));
+    item.appendChild(link);
+    list.appendChild(item);
+  });
+  nav.appendChild(list);
+  return nav;
+}
+
+function socialIcon(key) {
+  var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("aria-hidden", "true");
+  svg.setAttribute("focusable", "false");
+  var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("fill", "currentColor");
+  path.setAttribute("d", socialIconPath(key));
+  svg.appendChild(path);
+  return svg;
+}
+
+function socialIconPath(key) {
+  var paths = {
+    instagram: "M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm5 4.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zm5.25-1.15a1.1 1.1 0 1 0 1.1 1.1 1.1 1.1 0 0 0-1.1-1.1zM12 9.2A2.8 2.8 0 1 1 9.2 12 2.8 2.8 0 0 1 12 9.2z",
+    facebook: "M14.5 8.5H17V5h-2.5C12 5 10 7 10 9.5V11H8v3h2v7h3v-7h2.4l.6-3H13V9.6c0-.7.4-1.1 1.5-1.1z",
+    linkedin: "M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM8.1 10.2H5.7V18h2.4zm.15-2.35a1.4 1.4 0 1 0-1.4-1.4 1.4 1.4 0 0 0 1.4 1.4zM18.3 18v-4.3c0-2.3-1.23-3.37-2.87-3.37a2.47 2.47 0 0 0-2.23 1.22h-.06V10.2H10.8c.04.7 0 7.8 0 7.8h2.4v-4.36c0-.23.02-.46.08-.63a1.77 1.77 0 0 1 1.66-1.18c1.17 0 1.64.89 1.64 2.2V18z",
+    houzz: "M12 3 3 10.2V21h6.2v-6.2h5.6V21H21V10.2z",
+    x: "M4.2 4h3.4l4.1 5.5L16.2 4H20l-6.3 7.2L20.3 20h-3.4l-4.5-6-4.6 6H4l6.7-7.6z"
+  };
+  return paths[key] || "";
 }
 
 function initAnalytics() {
