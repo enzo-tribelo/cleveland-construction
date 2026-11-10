@@ -217,20 +217,21 @@ function initReveal() {
   var nodes = document.querySelectorAll(".reveal");
   if (!nodes.length) return;
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduce || !("IntersectionObserver" in window)) {
-    Array.prototype.forEach.call(nodes, function (node) {
-      node.classList.add("is-in");
-    });
-    return;
-  }
+  if (reduce || !("IntersectionObserver" in window)) return;
+
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (!entry.isIntersecting) return;
       entry.target.classList.add("is-in");
       observer.unobserve(entry.target);
     });
-  }, { threshold: 0.14, rootMargin: "0px 0px -6% 0px" });
+  }, { threshold: 0, rootMargin: "0px" });
+
   Array.prototype.forEach.call(nodes, function (node) {
+    if (node.id === "projects" || node.classList.contains("project")) return;
+    var rect = node.getBoundingClientRect();
+    if (rect.bottom > 0 && rect.top < window.innerHeight) return;
+    node.classList.add("reveal-pending");
     observer.observe(node);
   });
 }

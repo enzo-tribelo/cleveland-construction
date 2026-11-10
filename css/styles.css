@@ -638,13 +638,13 @@ p {
   color: #c9c2b6;
 }
 
-.reveal {
+.reveal-pending {
   opacity: 0;
   transform: translateY(22px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.reveal.is-in {
+.reveal-pending.is-in {
   opacity: 1;
   transform: none;
 }
@@ -950,7 +950,7 @@ html.lightbox-open body {
     scroll-behavior: auto !important;
   }
 
-  .reveal {
+  .reveal-pending {
     opacity: 1;
     transform: none;
   }
