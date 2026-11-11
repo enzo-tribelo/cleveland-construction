@@ -22,7 +22,7 @@ There is no enquiry form. The telephone and email links use `tel:` and `mailto:`
 
 ## Add photographs
 
-New project photos are still to come from Rich. Until then, keep the photographs already on the site, including the Claremont House images.
+New project photos are still to come from Rich for the projects that still use the earlier photographs. Until then, keep those photographs on the site.
 
 St James Square is written up from the brochure, which did not include pictures of it. Northend already uses the three site photographs from the brochure; more can be added in the same way.
 
