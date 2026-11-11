@@ -16,7 +16,7 @@ Live site: https://enzo-tribelo.github.io/cleveland-construction/
 Contact details on the page:
 
 - Richard Waldron, Director — 07825 071298 — rich@clevelandconstruction.co.uk
-- Sarah Waldron, Office Manager — same email, rich@clevelandconstruction.co.uk
+- Sarah Waldron, Office Manager — sarah@clevelandconstruction.co.uk
 
 There is no enquiry form. The telephone and email links use `tel:` and `mailto:`.
 
